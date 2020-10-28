@@ -1,0 +1,22 @@
+# pywb config file
+# ========================================
+#
+
+collections:
+    all: $all
+    bibalex:
+        index_paths: /srv/cdx/zipnum-cdx
+        surt_ordered: false
+
+
+# Settings for each collection
+use_js_obj_proxy: true
+
+# Memento support, enable
+enable_memento: true
+
+# Replay content in an iframe
+framed_replay: true
+
+enable_cdx_api: true
+

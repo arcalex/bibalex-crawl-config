@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-init-method="init" xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="properties">
+      <value>wayback.basedir=/var/local/openwayback wayback.archivedir.1=${wayback.basedir}/files1/ wayback.archivedir.2=${wayback.basedir}/files2/ wayback.url.scheme=http wayback.url.host=web.archive.bibalex.org wayback.url.port=80 wayback.url.prefix=${wayback.url.scheme}://${wayback.url.host}:${wayback.url.port}/web</value>
+    </property>
+  </bean>
+  <bean class="org.archive.wayback.util.url.AggressiveUrlCanonicalizer" id="waybackCanonicalizer"></bean>
+  <bean class="org.archive.wayback.resourcestore.locationdb.FlatFileResourceFileLocationDB" id="resourcefilelocationdb">
+    <property name="path" value="${wayback.basedir}/path-index.txt"></property>
+  </bean>
+  <import resource="CDXCollection.xml"></import>
+  <import resource="LiveWeb.xml"></import>
+  <bean class="org.archive.wayback.accesscontrol.robotstxt.RobotExclusionFilterFactory" id="excluder-factory-robot">
+    <property name="maxCacheMS" value="86400000"></property>
+    <property name="userAgent" value="ia_archiver"></property>
+    <property name="webCache" ref="proxylivewebcache"></property>
+  </bean>
+  <bean class="org.archive.wayback.accesscontrol.staticmap.StaticMapExclusionFilterFactory" id="excluder-factory-static">
+    <property name="file" value="${wayback.basedir}/exclusion/exclusion.txt"></property>
+    <property name="checkInterval" value="600000"></property>
+  </bean>
+  <bean class="org.archive.wayback.accesscontrol.CompositeExclusionFilterFactory" id="excluder-factory-composite">
+    <property name="factories">
+      <list>
+        <ref bean="excluder-factory-static"></ref>
+        <ref bean="excluder-factory-robot"></ref>
+      </list>
+    </property>
+  </bean>
+  <import resource="ArchivalUrlReplay.xml"></import>
+  <bean class="org.archive.wayback.webapp.ServerRelativeArchivalRedirect" name="+">
+    <property name="matchPort" value="80"></property>
+    <property name="useCollection" value="true"></property>
+  </bean>
+  <bean class="org.archive.wayback.webapp.AccessPoint" name="standardaccesspoint">
+    <property name="accessPointPath" value="${wayback.url.prefix}/"></property>
+    <property name="internalPort" value="${wayback.url.port}"></property>
+    <property name="serveStatic" value="true"></property>
+    <property name="bounceToReplayPrefix" value="false"></property>
+    <property name="bounceToQueryPrefix" value="false"></property>
+    <property name="enableMemento" value="true"></property>
+    <property name="replayPrefix" value="${wayback.url.prefix}/"></property>
+    <property name="queryPrefix" value="${wayback.url.prefix}/"></property>
+    <property name="staticPrefix" value="${wayback.url.prefix}/"></property>
+    <property name="collection" ref="localcdxcollection"></property>
+    <property name="replay" ref="archivalurlreplay"></property>
+    <property name="query">
+      <bean class="org.archive.wayback.query.Renderer">
+        <property name="captureJsp" value="/WEB-INF/query/BubbleCalendar.jsp"></property>
+      </bean>
+    </property>
+    <property name="uriConverter">
+      <bean class="org.archive.wayback.archivalurl.ArchivalUrlResultURIConverter">
+        <property name="replayURIPrefix" value="${wayback.url.prefix}/"></property>
+      </bean>
+    </property>
+    <property name="parser">
+      <bean class="org.archive.wayback.archivalurl.ArchivalUrlRequestParser">
+        <property name="maxRecords" value="1000000"></property>
+      </bean>
+    </property>
+    <property name="exclusionFactory" ref="excluder-factory-composite"></property>
+  </bean>
+</beans>

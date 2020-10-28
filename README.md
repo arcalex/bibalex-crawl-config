@@ -5,8 +5,17 @@ scripts used by the Bibliotheca Alexandrina in web crawling.
 
 This repository currently holds the following subfolders:
 
-## batch-nomination
+heritrix
+: Heritrix web crawl configuration and scripts
 
-Submit URLs in batch to the Nomination Tool by the University of North
-Texas.
+seeds
+: Notes on web crawl seed selection
 
+openwayback
+: OpenWayback installation and configuration
+
+pywb
+: Pywb installation and configuration
+
+batch-nomination
+: Batch submission to the Nomination Tool by the University of North Texas

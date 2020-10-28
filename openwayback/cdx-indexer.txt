@@ -1,0 +1,3 @@
+Run cdx-indexer on a group of hosts using dsh:
+
+dsh -cMg eg "k5start -f /etc/crawladmin.keytab -bUt -- sh -c 'cd /usr/local/wayback;for i in /1/webcrawl/*.warc.gz;do ./bin/cdx-indexer \$i >>/var/tmp/\${HOSTNAME}_1.cdx 2>>/var/tmp/\${HOSTNAME}_1_cdx.log;done'"

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+  <bean class="org.archive.wayback.liveweb.StdRemoteLiveWebCache" id="proxylivewebcache">
+    <property name="proxyHostPort" value="localhost:3128"></property>
+  </bean>
+  <bean class="org.archive.wayback.accesscontrol.robotstxt.RobotExclusionFilterFactory" id="excluder-factory-robot">
+    <property name="maxCacheMS" value="86400000"></property>
+    <property name="userAgent" value="ia_archiver"></property>
+    <property name="webCache" ref="proxylivewebcache"></property>
+  </bean>
+</beans>

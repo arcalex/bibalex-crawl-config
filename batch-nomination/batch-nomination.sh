@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# By Mahmoud Mubarak, Youssef Eldakar (editing)
+
 nomination_url=$1
 common_fields=$2
 clusters=$3
