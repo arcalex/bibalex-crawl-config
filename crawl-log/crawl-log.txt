@@ -1,0 +1,31 @@
+Example crawl log lines (line breaks inserted for readability):
+
+2011-06-23T17:12:08.802Z   
+200       
+1299 
+http://content-5.powells.com/robots.txt 
+LREP 
+http://content-5.powells.com/cgi-bin/imageDB.cgi?isbn=9780385518635 
+text/plain 
+#014 
+20110623171208574+225 
+sha1:YIUOKDGOLGI5JYHDTXRFFQ5FF4N2EJRV 
+- 
+-
+
+2011-06-23T17:12:09.591Z   
+200      
+15829 
+http://www.identitytheory.com/etexts/poetics.html 
+L 
+http://www.identitytheory.com/ 
+text/html 
+#025 
+20110623171208546+922 
+sha1:7AJUMSDTOMT4FN7MBFGGNJU3Z56MLCMW
+-
+-
+
+See the following for information on the crawl log file:
+
+http://crawler.archive.org/articles/user_manual/analysis.html

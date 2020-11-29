@@ -1,0 +1,9 @@
+$ ./uri-backtrace.pl crawl.log \
+> http://en.wikipedia.org/wiki/X-Ray
+Writing reverse log file...
+Opening reverse log file...
+Initiating backtrace...
+L http://en.wikipedia.org/wiki/X-Ray
+L http://en.wikipedia.org/wiki/University_of_London
+- http://www.tayarmasry.com/
+DONE

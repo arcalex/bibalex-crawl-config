@@ -1,0 +1,28 @@
+mam@mam-BibAlex:~/heritrix/heritrix-1.14.4/jobs/bibalex-domain-500k-impoliteness-20100824113743150$ ./uri-backtrace.pl crawl.log arcs 5 \
+> https://www.bibalex.org/libraries/presentation/static/application/css/css/css/TestData/TestData/js/presentation/static/10000.aspx
+Writing reverse log file...
+Opening reverse log file...
+Initiating backtrace...
+L https://www.bibalex.org/libraries/presentation/static/application/css/css/css/TestData/TestData/js/presentation/static/10000.aspx
+E https://www.bibalex.org/libraries/presentation/static/application/css/css/css/TestData/TestData/js/functions.js
+E https://www.bibalex.org/libraries/presentation/static/application/css/css/css/TestData/js/css/home.css
+E https://www.bibalex.org/libraries/presentation/static/application/css/css/css/TestData/js/functions.js
+E https://www.bibalex.org/libraries/presentation/static/application/css/css/css/css/css/home.css
+E https://www.bibalex.org/libraries/presentation/static/application/css/css/css/css/home.css
+E https://www.bibalex.org/libraries/presentation/static/application/css/css/css/home.css
+E https://www.bibalex.org/libraries/presentation/static/application/css/css/home.css
+E https://www.bibalex.org/libraries/presentation/static/application/css/home.css
+X https://www.bibalex.org/libraries/presentation/static/application/x-shockwave-flash
+L https://www.bibalex.org/libraries/presentation/static/10000.aspx
+R https://www.bibalex.org/libraries/404.aspx?aspxerrorpath=/libraries/Presentation/Static/includes/presentation/static/10000.aspx
+L https://www.bibalex.org/libraries/Presentation/Static/includes/presentation/static/10000.aspx
+E https://www.bibalex.org/libraries/Presentation/Static/includes/functions.js
+X https://www.bibalex.org/libraries/Presentation/Static/10002.aspx
+X http://www.bibalex.org/libraries/presentation/static/15520.aspx
+L http://cwg.bibalex.org:8000/gw_49_5_4/html/default/ar/common_files/new.js
+L http://cwg.bibalex.org:8000/gw_49_5_4/html/default/ar/common_files/
+X http://cwg.bibalex.org:8000/gw_49_5_4/html/default/ar/common_files/skin_images/
+L http://cwg.bibalex.org:8000/cgi-bin/chameleon?skin=default&lng=ar
+L http://www.bibalex.org/home/default_ar.aspx
+- http://www.bibalex.org/Home/Default_EN.aspx
+DONE
